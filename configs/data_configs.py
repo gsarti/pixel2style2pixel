@@ -24,6 +24,13 @@ DATASETS = {
 		'test_source_root': dataset_paths['celeba_test_sketch'],
 		'test_target_root': dataset_paths['celeba_test'],
 	},
+	'fashion_sketch_to_image': {
+		'transforms': transforms_config.SketchToImageTransforms,
+		'train_source_root': dataset_paths['fashion_train_sketch'],
+		'train_target_root': dataset_paths['fashion_train'],
+		'test_source_root': dataset_paths['fashion_test_sketch'],
+		'test_target_root': dataset_paths['fashion_test'],
+	},
 	'celebs_seg_to_face': {
 		'transforms': transforms_config.SegToImageTransforms,
 		'train_source_root': dataset_paths['celeba_train_segmentation'],
