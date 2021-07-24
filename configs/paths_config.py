@@ -3,12 +3,17 @@ dataset_paths = {
 	'celeba_test': '',
 	'celeba_train_sketch': '',
 	'celeba_test_sketch': '',
+	'fashion_train': '/app/fashion_train',
+	'fashion_train_sketch': '/app/fashion_train_sketch',
+	'fashion_test': '/app/fashion_test',
+	'fashion_test_sketch': '/app/fashion_test_sketch',
 	'celeba_train_segmentation': '',
 	'celeba_test_segmentation': '',
 	'ffhq': '',
 }
 
 model_paths = {
+	'stylegan_fashion': '/app/pretrained_models/stylegan2-fashion-config-f.pt',
 	'stylegan_ffhq': 'pretrained_models/stylegan2-ffhq-config-f.pt',
 	'ir_se50': 'pretrained_models/model_ir_se50.pth',
 	'circular_face': 'pretrained_models/CurricularFace_Backbone.pth',
