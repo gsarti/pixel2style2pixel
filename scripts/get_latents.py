@@ -79,8 +79,10 @@ def run():
             global_time.append(toc - tic)
             all_results.extend(result_batch)
             global_i += opts.test_batch_size
-    latent_save_path = os.path.join(out_path_results, 'latents.pt')
-    torch.save(all_results, latent_save_path)
+    train_latents = torch.cat(all_results[opts.n_test_latents:])
+    test_latents = torch.cat(all_results[:opts.n_test_latents])
+    torch.save(train_latents, os.path.join(out_path_results, 'train_latents.pt'))
+    torch.save(test_latents, os.path.join(out_path_results, 'test_latents.pt'))
     stats_path = os.path.join(opts.exp_dir, 'stats.txt')
     result_str = 'Runtime {:.4f}+-{:.4f}'.format(np.mean(global_time), np.std(global_time))
     print(result_str)
