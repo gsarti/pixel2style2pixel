@@ -23,6 +23,7 @@ class TestOptions:
 		self.parser.add_argument('--n_outputs_to_generate', type=int, default=5, help='Number of outputs to generate per input image.')
 		self.parser.add_argument('--mix_alpha', type=float, default=None, help='Alpha value for style-mixing')
 		self.parser.add_argument('--latent_mask', type=str, default=None, help='Comma-separated list of latents to perform style-mixing with')
+		self.parser.add_argument('--n_test_latents', type=int, default=100, help='How many latents to save separately for testing, used in get_latents.py')
 
 		# arguments for super-resolution
 		self.parser.add_argument('--resize_factors', type=str, default=None,
