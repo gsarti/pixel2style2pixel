@@ -67,6 +67,7 @@ def run():
 
     global_i = 0
     global_time = []
+    all_results = []
     for input_batch in tqdm(dataloader):
         if global_i >= opts.n_images:
             break
@@ -76,15 +77,10 @@ def run():
             result_batch = run_on_batch(input_cuda, net, opts)
             toc = time.time()
             global_time.append(toc - tic)
-
-        for i in range(opts.test_batch_size):
-            result = result_batch[i]
-            im_path = dataset.paths[global_i]
-            latent_save_path = os.path.join(out_path_results, os.path.basename(im_path))
-            torch.save(result, latent_save_path)
-
-            global_i += 1
-
+            all_results.extend(result_batch)
+            global_i += opts.test_batch_size
+    latent_save_path = os.path.join(out_path_results, 'latents.pt')
+    torch.save(all_results, latent_save_path)
     stats_path = os.path.join(opts.exp_dir, 'stats.txt')
     result_str = 'Runtime {:.4f}+-{:.4f}'.format(np.mean(global_time), np.std(global_time))
     print(result_str)
